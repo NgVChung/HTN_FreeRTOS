@@ -1,0 +1,30 @@
+# ==========================================
+# Keil MDK-ARM Build Artifacts & Garbage
+# ==========================================
+MDK-ARM/*.uvoptx
+MDK-ARM/*.uvguix.*
+MDK-ARM/*.dep
+MDK-ARM/*.build_log.htm
+MDK-ARM/*.htm
+MDK-ARM/*.lnp
+MDK-ARM/*.sct
+MDK-ARM/Objects/
+MDK-ARM/Listings/
+MDK-ARM/DebugData/
+MDK-ARM/RTE/
+MDK-ARM/FreeRTOS_Blynk_3Led/
+
+# File rác chung khi biên dịch
+*.elf
+*.hex
+*.bin
+*.map
+*.o
+*.d
+*.su
+*.crf
+*.axf
+
+# OS Garbage
+.DS_Store
+Thumbs.db

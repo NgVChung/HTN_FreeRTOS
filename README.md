@@ -1,6 +1,7 @@
 YÊU CẦU:
 Từ bài tập tuần này chúng ta có thể sử dụng các thư viện như: STD hoặc HAL.
 Có thể triển khai code trên KeilC, Linux hoặc môi trường tùy chọn.
+
 Bài tập 01:
 Viết chương trình cho VĐK STM32F103, thực hiện:
 Porting thành công hệ điều hành FreeRTOS lên VĐK STM32F103.

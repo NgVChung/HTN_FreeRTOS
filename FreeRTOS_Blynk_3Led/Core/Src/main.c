@@ -28,9 +28,9 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 typedef struct {
-    GPIO_TypeDef* GPIOx;         // Port (e.g., GPIOA, GPIOC)
-    uint16_t GPIO_Pin;           // Pin (e.g., GPIO_PIN_0)
-    uint32_t ToggleHalfPeriodMs; // Th?i gian b?t/t?t (n?a chu k?) tính b?ng ms
+    GPIO_TypeDef* GPIOx;         
+    uint16_t GPIO_Pin;          
+    uint32_t ToggleHalfPeriodMs; 
 } LedConfig_t;
 /* USER CODE END PTD */
 
@@ -47,10 +47,6 @@ typedef struct {
 /* Private variables ---------------------------------------------------------*/
 osThreadId defaultTaskHandle;
 /* USER CODE BEGIN PV */
-// Kh?i t?o thông s? cho 3 LED v?i 3 t?n s? d?c l?p
-// f = 0.1Hz => T = 10s   => T_half = 5000ms
-// f = 1Hz   => T = 1s    => T_half = 500ms
-// f = 10Hz  => T = 0.1s  => T_half = 50ms
 LedConfig_t led1_config = {LED_01HZ_GPIO_Port, LED_01HZ_Pin, 5000};
 LedConfig_t led2_config = {LED_1HZ_GPIO_Port,  LED_1HZ_Pin,  500};
 LedConfig_t led3_config = {LED_10HZ_GPIO_Port, LED_10HZ_Pin, 50};
@@ -72,15 +68,12 @@ void vLedTask(void *pvParameters);
   */
 void vLedTask(void *pvParameters)
 {
-    // Ép ki?u con tr? tham s? v? ki?u LedConfig_t
     LedConfig_t *pLed = (LedConfig_t *)pvParameters;
 
     for (;;)
     {
-        // Ð?o tr?ng thái chân LED
         HAL_GPIO_TogglePin(pLed->GPIOx, pLed->GPIO_Pin);
 
-        // Delay Task theo th?i gian b?t/t?t tuong ?ng
         vTaskDelay(pdMS_TO_TICKS(pLed->ToggleHalfPeriodMs));
     }
 }

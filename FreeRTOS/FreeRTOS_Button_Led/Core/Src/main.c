@@ -113,12 +113,12 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-/* 1. T?o 3 Queue */
+/* 1. Tao 3 Queue */
   xLedQueue1 = xQueueCreate(5, sizeof(LedCommand_t));
   xLedQueue2 = xQueueCreate(5, sizeof(LedCommand_t));
   xLedQueue3 = xQueueCreate(5, sizeof(LedCommand_t));
 
-  /* 2. T?o Task Ð?c Nút Nh?n */
+  /* 2. T?o Task Ðoc nut nhan */
   xTaskCreate(vButtonTask, "ButtonTask", 128, NULL, 2, &xButtonTaskHandle);
 
   /* 3. T?o 3 Task LED d?c l?p */
@@ -310,7 +310,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 /* TASK Ð?C NÚT NH?N */
 void vButtonTask(void *pvParameters) {
-    uint8_t selected_led = 0;           // 0: LED1, 1: LED2, 2: LED3
+    uint8_t selected_led = 2;           // 0: LED1, 1: LED2, 2: LED3
     uint16_t brightness[3] = {0, 0, 0}; // Duty cycle (0 -> 1000)
     const uint16_t STEP = 100;
 
@@ -319,7 +319,7 @@ void vButtonTask(void *pvParameters) {
         if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == GPIO_PIN_RESET) {
             vTaskDelay(pdMS_TO_TICKS(50));
             if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == GPIO_PIN_RESET) {
-                selected_led = (selected_led + 1) % 3;
+                selected_led = (selected_led + 2) % 3;
                 while (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0) == GPIO_PIN_RESET) {
                     vTaskDelay(pdMS_TO_TICKS(10));
                 }

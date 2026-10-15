@@ -3,8 +3,8 @@
  * Auto generated Run-Time-Environment Component Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'HTN_BUTTON_LED' 
- * Target:  'HTN_BUTTON_LED' 
+ * Project: 'Bai_02_EXTI_UART' 
+ * Target:  'Bai_02_EXTI_UART' 
  */
 
 #ifndef RTE_COMPONENTS_H
